@@ -1,0 +1,8 @@
+add_executable(collision_distr main_collision_distr.cpp)
+target_link_libraries(collision_distr tlx)
+
+add_executable(inverse_collision main_inverse_collision.cpp)
+target_link_libraries(inverse_collision tlx)
+
+add_executable(collision_multi_distr main_multi_collision_distr.cpp)
+target_link_libraries(collision_multi_distr tlx)

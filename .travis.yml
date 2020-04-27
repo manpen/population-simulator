@@ -1,0 +1,23 @@
+dist: bionic
+os: linux
+language: c++
+git:
+  depth: 1
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-9
+
+script:
+  - git submodule update --init --recursive
+  - mkdir debug && cd "$_"
+  - cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=g++-9 ..
+  - make -j 2
+  - ctest -V
+  - cd ..; mkdir release && cd "$_"
+  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-9 ..
+  - make -j 2
+  - ctest -V
